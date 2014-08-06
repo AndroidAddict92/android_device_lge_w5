@@ -5,7 +5,7 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 $(call inherit-product-if-exists, vendor/lge/w5/w5-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/lge/w5/overlay
+DEVICE_PACKAGE_OVERLAYS += device/lge/kernel/kernel/overlay
 
 LOCAL_PATH := device/lge/w5
 ifeq ($(TARGET_PREBUILT_KERNEL),)
@@ -15,7 +15,8 @@ else
 endif
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
+    $(LOCAL_KERNEL):kernel \
+    $(LOCAL_PATH)/fstab.qcom:root/fstab.qcom
 
 $(call inherit-product, build/target/product/full.mk)
 
